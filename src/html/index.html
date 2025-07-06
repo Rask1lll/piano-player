@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Piano Sustain</title>
+  </head>
+  <link rel="stylesheet" href="../css/piano.css" />
+  <link rel="stylesheet" href="../css/mode.css" />
+  <body>
+    <head>
+      <div class="modes">
+        <button class="modeBtn modeBtnActive" id="Interactive_Mode">
+          Interactive Mode
+        </button>
+        <button class="modeBtn" id="Prepared_Mode">Prepared Mode</button>
+      </div>
+      <div class="modeOptions">
+        <button class="modeOption modeOptionActive">Record</button>
+        <button class="modeOption">Stop Recording</button>
+        <button class="modeOption getCover">Download Recording</button>
+      </div>
+    </head>
+    <main>
+      <section class="piano">
+        <div class="Btn" data-name="C3">
+          <div class="pianoBtnWhite pianoBtn" data-name="C3" data-btn="q">
+            C
+          </div>
+          <div class="pianoBtnBlack pianoBtn" data-name="C#3" data-btn="2">
+            C#
+          </div>
+        </div>
+        <div class="Btn" data-name="D3">
+          <div class="pianoBtnWhite pianoBtn" data-name="D3" data-btn="w">
+            D
+          </div>
+          <div class="pianoBtnBlack pianoBtn" data-name="D#3" data-btn="3">
+            D#
+          </div>
+        </div>
+        <div class="Btn" data-name="E3">
+          <div class="pianoBtnWhite pianoBtn" data-name="E3" data-btn="e">
+            E
+          </div>
+        </div>
+        <div class="Btn" data-name="F3">
+          <div class="pianoBtnWhite pianoBtn" data-name="F3" data-btn="r">
+            F
+          </div>
+          <div class="pianoBtnBlack pianoBtn" data-name="F#3" data-btn="5">
+            F#
+          </div>
+        </div>
+        <div class="Btn" data-name="G3">
+          <div class="pianoBtnWhite pianoBtn" data-name="G3" data-btn="t">
+            G
+          </div>
+          <div class="pianoBtnBlack pianoBtn" data-name="G#3" data-btn="6">
+            G#
+          </div>
+        </div>
+        <div class="Btn" data-name="A3">
+          <div class="pianoBtnWhite pianoBtn" data-name="A3" data-btn="y">
+            A
+          </div>
+          <div class="pianoBtnBlack pianoBtn" data-name="A#3" data-btn="7">
+            A#
+          </div>
+        </div>
+        <div class="Btn" data-name="B3">
+          <div class="pianoBtnWhite pianoBtn" data-name="B3" data-btn="u">
+            B
+          </div>
+        </div>
+        <div class="Btn" data-name="C4">
+          <div class="pianoBtnWhite pianoBtn" data-name="C4" data-btn="i">
+            C
+          </div>
+          <div class="pianoBtnBlack pianoBtn" data-name="C#4" data-btn="9">
+            C#
+          </div>
+        </div>
+        <div class="Btn" data-name="D4">
+          <div class="pianoBtnWhite pianoBtn" data-name="D4" data-btn="o">
+            D
+          </div>
+          <div class="pianoBtnBlack pianoBtn" data-name="D#4" data-btn="0">
+            D#
+          </div>
+        </div>
+        <div class="Btn" data-name="E4">
+          <div class="pianoBtnWhite pianoBtn" data-name="E4" data-btn="p">
+            E
+          </div>
+        </div>
+        <div class="Btn" data-name="F4">
+          <div class="pianoBtnWhite pianoBtn" data-name="F4" data-btn="z">
+            F
+          </div>
+          <div class="pianoBtnBlack pianoBtn" data-name="F#4" data-btn="s">
+            F#
+          </div>
+        </div>
+        <div class="Btn" data-name="G4">
+          <div class="pianoBtnWhite pianoBtn" data-name="G4" data-btn="x">
+            G
+          </div>
+          <div class="pianoBtnBlack pianoBtn" data-name="G#4" data-btn="d">
+            G#
+          </div>
+        </div>
+        <div class="Btn" data-name="A4">
+          <div class="pianoBtnWhite pianoBtn" data-name="A4" data-btn="c">
+            A
+          </div>
+          <div class="pianoBtnBlack pianoBtn" data-name="A#4" data-btn="f">
+            A#
+          </div>
+        </div>
+        <div class="Btn" data-name="B4">
+          <div class="pianoBtnWhite pianoBtn" data-name="B4" data-btn="v">
+            B
+          </div>
+        </div>
+        <div class="Btn" data-name="C5">
+          <div class="pianoBtnWhite pianoBtn" data-name="C5" data-btn="b">
+            C
+          </div>
+          <div class="pianoBtnBlack pianoBtn" data-name="C#5" data-btn="h">
+            C#
+          </div>
+        </div>
+        <div class="Btn" data-name="D5">
+          <div class="pianoBtnWhite pianoBtn" data-name="D5" data-btn="n">
+            D
+          </div>
+          <div class="pianoBtnBlack pianoBtn" data-name="D#5" data-btn="j">
+            D#
+          </div>
+        </div>
+        <div class="Btn" data-name="E5">
+          <div class="pianoBtnWhite pianoBtn" data-name="E5" data-btn="m">
+            E
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="../JavaScript/changeMode.js"></script>
+    <script type="module" src="../JavaScript/pianoBtnSave.js"></script>
+  </body>
+</html>
