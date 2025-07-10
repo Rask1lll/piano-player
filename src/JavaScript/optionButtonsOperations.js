@@ -1,3 +1,5 @@
+import { readJsonFile } from "./getFile.js";
+
 const deleteOptionBtns = function () {
   const option = document.querySelector(".modeOptions");
   const deleteBtns = option.children;
@@ -15,14 +17,25 @@ const addOptionBtns = function (id) {
   if (id === "Interactive_Mode") {
     btnsToAdd = ["Record", "Stop Recording", "Download Recording"];
     btnsToAdd.forEach((el) => {
-      option.insertAdjacentHTML(
-        "beforeend",
+      if (el === "Download Recording") {
+        option.insertAdjacentHTML(
+          "beforeend",
+          `
+          <button class="modeOption">
+            ${el}
+          </button>
         `
+        );
+      } else {
+        option.insertAdjacentHTML(
+          "beforeend",
+          `
           <button class="modeOption" data-mode-type="Interactive_Mode">
             ${el}
           </button>
         `
-      );
+        );
+      }
     });
   } else {
     option.insertAdjacentHTML(
@@ -31,6 +44,10 @@ const addOptionBtns = function (id) {
         <input type="file" class="modeOption" id="fileInput" />
       `
     );
+
+    readJsonFile((callback) => {
+      console.log(callback);
+    });
   }
 };
 
