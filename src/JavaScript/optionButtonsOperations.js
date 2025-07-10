@@ -1,4 +1,5 @@
 import { readJsonFile } from "./getFile.js";
+import { pressPianoKeys } from "./playSongByGiven.js";
 
 const deleteOptionBtns = function () {
   const option = document.querySelector(".modeOptions");
@@ -47,6 +48,7 @@ const addOptionBtns = function (id) {
 
     readJsonFile((callback) => {
       console.log(callback);
+      pressPianoKeys(callback);
     });
   }
 };
