@@ -47,7 +47,6 @@ const addOptionBtns = function (id) {
     );
 
     readJsonFile((callback) => {
-      console.log(callback);
       pressPianoKeys(callback);
     });
   }

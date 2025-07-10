@@ -1,4 +1,3 @@
-// import { readJsonFile } from "./getFile";
 function pressKey(key, pressTime, startduration) {
   setTimeout(() => {
     const event = new KeyboardEvent("keydown", {
