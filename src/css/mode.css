@@ -11,7 +11,7 @@
   padding: 10px 20px;
   margin: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
   color: white;
 }
 
@@ -33,7 +33,29 @@
   padding: 10px 20px;
   margin: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
+  color: white;
+}
+
+.getCover {
+  background-color: #a1a1a1;
+  border: 0px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  color: white;
+}
+
+.getCover:hover {
+  background-color: #74c0ff;
+  border: 0px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
   color: white;
 }
 
@@ -56,6 +78,62 @@
 
 .modeOption:hover {
   background-color: #74c0ff;
+  border: 0px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.modeOptions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.modeOptionInput {
+  background-color: #a1a1a1;
+  border: 0px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+.playingSpeedContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+.playingSpeed {
+  background-color: #a1a1a1;
+  border: 0px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.playingSpeed:hover {
+  background-color: #74c0ff;
+  border: 0px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+.playingSpeedActive {
+  background-color: #8400ffdc;
   border: 0px solid #ccc;
   border-radius: 4px;
   padding: 10px 20px;

@@ -1,5 +1,6 @@
 import { readJsonFile } from "./getFile.js";
 import { pressPianoKeys } from "./playSongByGiven.js";
+import { playingSpeedRender } from "./getPlayingSpeed.js";
 
 const deleteOptionBtns = function () {
   const option = document.querySelector(".modeOptions");
@@ -42,10 +43,16 @@ const addOptionBtns = function (id) {
     option.insertAdjacentHTML(
       "afterBegin",
       `
-        <input type="file" class="modeOption" id="fileInput" />
+        <input type="file" class="modeOption modeOptionInput" id="fileInput" />
+        <div class="playingSpeedContainer">
+        <div class="playingSpeed" data-speed="1">x1</div>
+        <div class="playingSpeed" data-speed="2">x2</div>
+        <div class="playingSpeed" data-speed="3">x4</div>
+        </div>
       `
     );
 
+    playingSpeedRender();
     readJsonFile((callback) => {
       pressPianoKeys(callback);
     });
