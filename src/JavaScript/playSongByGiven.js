@@ -1,3 +1,4 @@
+import { getBtnSpeed } from "./getPlayingSpeed.js";
 function pressKey(key, pressTime, startduration) {
   setTimeout(() => {
     const event = new KeyboardEvent("keydown", {
@@ -15,12 +16,11 @@ function pressKey(key, pressTime, startduration) {
 }
 
 function pressPianoKeys(keysToPress) {
-  console.log(typeof keysToPress);
   let pressDuration = 0;
   for (let el of keysToPress) {
     let keys = Object.keys(el);
     let key = keys[0];
-    let duration = el[key];
+    let duration = el[key] / getBtnSpeed();
 
     pressDuration = pressDuration + duration;
     pressKey(key, pressDuration, duration);

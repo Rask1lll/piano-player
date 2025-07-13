@@ -5,6 +5,7 @@ export const timings = [];
 function pianoBtnSave() {
   controller = new AbortController();
   const getCover = document.querySelector(".getCover");
+  console.log("sex");
   const elems = document.querySelectorAll(".pianoBtn");
   let btns = [];
   elems.forEach((element) => {
@@ -49,10 +50,18 @@ function pianoBtnSave() {
   );
 
   getCover.addEventListener("click", () => {
-    console.log(timings);
+    document.querySelector(".downloadDialog").showModal();
+    document
+      .querySelector(".closeSongNameModal")
+      .addEventListener("click", () => {
+        document.querySelector(".downloadDialog").close();
+      });
+    document.querySelector(".enterSongName").addEventListener("click", () => {
+      const name = document.getElementById("songName").value;
 
-    const jsonData = JSON.stringify(timings);
-    downloadFile(jsonData, "timings.json");
+      const jsonData = JSON.stringify(timings);
+      downloadFile(jsonData, name + ".json");
+    });
   });
 
   function downloadFile(data, filename) {

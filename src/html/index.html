@@ -6,6 +6,7 @@
   </head>
   <link rel="stylesheet" href="../css/piano.css" />
   <link rel="stylesheet" href="../css/mode.css" />
+  <link rel="stylesheet" href="../css/dialog.css" />
   <body>
     <head>
       <div class="modes">
@@ -17,7 +18,9 @@
       <div class="modeOptions">
         <button class="modeOption modeOptionActive">Record</button>
         <button class="modeOption">Stop Recording</button>
-        <button class="getCover">Download Recording</button>
+        <button class="getCover" id="Download Recording">
+          Download Recording
+        </button>
       </div>
     </head>
     <main>
@@ -144,11 +147,23 @@
           </div>
         </div>
       </section>
+      <section class="recordingSection">
+        <h1 class="recordingSectionLabel"></h1>
+      </section>
+      <section>
+        <dialog class="downloadDialog">
+          <h2>Please Enter Song Name:</h2>
+          <input type="text" id="songName" />
+          <button class="enterSongName">Enter</button>
+          <button class="closeSongNameModal">Close</button>
+        </dialog>
+      </section>
     </main>
 
     <script type="module" src="../JavaScript/changeMode.js"></script>
     <script type="module" src="../JavaScript/pianoBtnSave.js"></script>
     <script type="module" src="../JavaScript/playSongByGiven.js"></script>
     <script type="module" src="../JavaScript/mouseClickOnPiano.js"></script>
+    <script type="module" src="../JavaScript/addRecordingLabel.js"></script>
   </body>
 </html>

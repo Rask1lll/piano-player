@@ -49,3 +49,16 @@ body {
 .activebtn {
   background-color: rgb(110, 100, 100);
 }
+
+.recordingSection {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8929265;
+  transition: all 0.3s ease-in-out;
+}
+
+.recordingSectionHidden {
+  display: none;
+}

@@ -14,7 +14,6 @@ function addingEventsOnClick() {
     element.addEventListener("mouseup", () => {
       element.classList.remove("activebtn");
       buttonPressedTime = Date.now() - buttonPressedTime;
-      console.log(buttonPressedTime);
       timings.push({
         [element.getAttribute("data-btn").toLowerCase()]: buttonPressedTime,
       });

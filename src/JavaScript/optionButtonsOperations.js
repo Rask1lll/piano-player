@@ -1,14 +1,13 @@
 import { readJsonFile } from "./getFile.js";
 import { pressPianoKeys } from "./playSongByGiven.js";
 import { playingSpeedRender } from "./getPlayingSpeed.js";
-
+import { changeModeOption } from "./changeModeOption.js";
 const deleteOptionBtns = function () {
   const option = document.querySelector(".modeOptions");
   const deleteBtns = option.children;
   let len = deleteBtns.length;
   for (let index = 0; index < len; index++) {
     deleteBtns[0].remove();
-    console.log(index);
   }
 };
 
@@ -23,7 +22,7 @@ const addOptionBtns = function (id) {
         option.insertAdjacentHTML(
           "beforeend",
           `
-          <button class="modeOption">
+          <button class="getCover"  id='${el}'>
             ${el}
           </button>
         `
@@ -32,7 +31,7 @@ const addOptionBtns = function (id) {
         option.insertAdjacentHTML(
           "beforeend",
           `
-          <button class="modeOption" data-mode-type="Interactive_Mode">
+          <button class="modeOption" id='${el}'>
             ${el}
           </button>
         `
