@@ -1,11 +1,14 @@
+import { generateSound } from "./generatePianoSound.js";
+
 let controller = null;
 
 export const timings = [];
 
+let isActive;
+
 function pianoBtnSave() {
   controller = new AbortController();
   const getCover = document.querySelector(".getCover");
-  console.log("sex");
   const elems = document.querySelectorAll(".pianoBtn");
   let btns = [];
   elems.forEach((element) => {
@@ -22,6 +25,12 @@ function pianoBtnSave() {
           el.classList.add("activebtn");
           if (!time[event.key.toLowerCase()]) {
             time[event.key.toLowerCase()] = Date.now();
+          }
+          let value = el.getAttribute("data-value");
+          value = parseInt(value);
+          if (!isActive) {
+            isActive = true;
+            generateSound(value, true);
           }
         }
       });
@@ -43,6 +52,8 @@ function pianoBtnSave() {
             });
             delete time[event.key.toLowerCase()];
           }
+          isActive = false;
+          generateSound(0, false);
         }
       });
     },

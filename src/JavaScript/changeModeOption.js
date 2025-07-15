@@ -29,8 +29,6 @@ function changeModeOption() {
         btn.id == "Stop Recording"
       ) {
         pianoBtnSaveStop();
-
-        console.log("aleeeeee");
         showLabel(false);
       }
       if (!btnIsDownload) {
