@@ -1,0 +1,110 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+
+.modes,
+.options {
+  margin: 10px 0;
+}
+
+button {
+  margin: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid #333;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.active {
+  background: #28a745;
+  color: white;
+  transform: scale(1.05);
+}
+
+.selected {
+  background: #007bff;
+  color: white;
+}
+
+.piano {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.white {
+  width: 40px;
+  height: 160px;
+  background: white;
+  border: 1px solid black;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 10px;
+  padding-bottom: 4px;
+}
+
+.black {
+  width: 25px;
+  height: 100px;
+  background: black;
+  position: absolute;
+  top: 0;
+  left: 28px;
+  z-index: 2;
+  color: white;
+  font-size: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 2px;
+}
+
+.pressed {
+  background: orange !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#status {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#status.recording {
+  color: red;
+}
+
+#progressContainer {
+  margin-top: 15px;
+  width: 80%;
+  height: 20px;
+  border: 1px solid #333;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background: #f0f0f0;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: #007bff;
+  transition: width 0.1s linear;
+}
