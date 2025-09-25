@@ -43,7 +43,6 @@ export function setupPlayer(state) {
     progressBar.style.width = "0%";
     const playStart = Date.now();
 
-    // отключаем кнопку Play
     playBtn.disabled = true;
 
     state.playInterval = setInterval(() => {
@@ -52,7 +51,7 @@ export function setupPlayer(state) {
       progressBar.style.width = percent + "%";
       if (percent >= 100) {
         clearInterval(state.playInterval);
-        playBtn.disabled = false; // возвращаем кнопку Play
+        playBtn.disabled = false;
         setTimeout(() => {
           progressContainer.classList.add("hidden");
           progressBar.style.width = "0%";
@@ -81,7 +80,7 @@ export function setupPlayer(state) {
     return [...keys].map((el) => ({
       key: el.dataset.key,
       note: el.innerText,
-      freq: null, // частота не нужна тут
+      freq: null,
     }));
   }
 }
