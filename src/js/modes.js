@@ -29,7 +29,6 @@ export function setupModes(state) {
       recordBtn.classList.add("hidden");
       stopBtn.classList.add("hidden");
       downloadBtn.classList.add("hidden");
-      stopSongBtn.classList.remove("hidden");
 
       speedBtns.classList.remove("hidden");
 

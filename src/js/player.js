@@ -1,12 +1,11 @@
 import { playSound, stopSound } from "./audio.js";
 
 let playedSong;
+
 let songStartedTime;
 let pauseTime;
 let suspended = false;
 let beenSuspended = false;
-let allTimeouts = [];
-let percent;
 
 const Tempkeys = [
   { key: "q", note: "C3", freq: 130.81 },
@@ -40,33 +39,19 @@ const Tempkeys = [
   { key: "m", note: "E5", freq: 659.25 },
 ];
 
-function hideProgress(state, playBtn, progressContainer, progressBar) {
-  playBtn.innerHTML = `<span id="playBtn">Play</span>`;
-  clearInterval(state.playInterval);
-  playBtn.disabled = false;
-  setTimeout(() => {
-    progressContainer.classList.add("hidden");
-    progressBar.style.width = "0%";
-  }, 300);
+let allTimeouts = [];
 
-  playBtn.classList.remove("hidden");
-  document.getElementById("stopSong").classList.add("hidden");
-}
+const pauseBtn = document.getElementById("stopButton");
 
-function stopPlayingSong(state) {
-  allTimeouts.forEach((el) => clearTimeout(el));
-  allTimeouts = [];
-  Object.keys(state.oscList).forEach((k) => {
-    stopSound(k, state, Tempkeys);
+function makeDisable(state) {
+  document.querySelectorAll("#soundSpeed").forEach((el) => {
+    el.disabled = state;
   });
 }
 
-function findKeyByNote(note, keys) {
-  const el = [...keys].find((k) => k.innerText.slice(0, 3).includes(note));
-  return el ? el.dataset.key : null;
-}
-
+let percent;
 export function setupPlayer(state) {
+  pauseBtn.classList.add("hidden");
   const playBtn = document.getElementById("play");
   const fileInput = document.getElementById("fileInput");
   const progressContainer = document.getElementById("progressContainer");
@@ -78,6 +63,9 @@ export function setupPlayer(state) {
     if (!f) return;
     const reader = new FileReader();
     reader.onload = () => {
+      pauseBtn.classList.remove("hidden");
+
+      makeDisable(true);
       const song = JSON.parse(reader.result);
       playedSong = song;
       playSong(song);
@@ -88,6 +76,9 @@ export function setupPlayer(state) {
   playBtn.onclick = () => {
     if (state.currentMode !== "prepared") return;
     if (playedSong) {
+      pauseBtn.classList.remove("hidden");
+
+      makeDisable(true);
       playSong({ notes: playedSong.notes });
     }
   };
@@ -96,7 +87,7 @@ export function setupPlayer(state) {
     let suspendedTime = 0;
     songStartedTime = Date.now();
 
-    if (!song.notes.length) {
+    if (!song.notes || !song.notes.length) {
       alert("Song is empty");
       return;
     }
@@ -123,7 +114,11 @@ export function setupPlayer(state) {
           percent = Math.min((elapsed / duration) * 100, 100);
           progressBar.style.width = percent + "%";
           if (percent >= 100) {
-            hideProgress(state, playBtn, progressContainer, progressBar);
+            hideProgress();
+            suspended = false;
+            beenSuspended = false;
+            pauseBtn.classList.add("hidden");
+            makeDisable(false);
           }
         } else {
           tempSuspend = Date.now() - suspendedTime;
@@ -135,19 +130,22 @@ export function setupPlayer(state) {
     document.getElementById("stopSong").classList.remove("hidden");
     const keys = document.querySelectorAll(".white, .black");
 
-    const pauseBtn = document.getElementById("stopButton");
-    pauseBtn.addEventListener("click", () => {
+    pauseBtn.onclick = () => {
       if (pauseBtn.innerHTML == "⏹") {
         suspendedTime = Date.now();
         suspended = true;
         beenSuspended = true;
-        stopPlayingSong(state);
+        stopPlayingSong();
       } else {
         if (!songStartedTime) return;
         suspended = false;
         pauseTime = Date.now();
         const songPauseTime = pauseTime - songStartedTime;
-        let restNotes = song.notes.filter((el) => el.startTime > songPauseTime);
+        let restNotes = song.notes.filter((el) => {
+          return el.startTime > songPauseTime;
+        });
+
+        if (!restNotes.length) return;
 
         const firstStartTime = restNotes[0].startTime;
 
@@ -158,12 +156,36 @@ export function setupPlayer(state) {
 
         playSong({ notes: restNotes }, true);
       }
-    });
+    };
+
+    function hideProgress() {
+      playBtn.innerHTML = `Play`;
+      clearInterval(state.playInterval);
+      playBtn.disabled = false;
+      setTimeout(() => {
+        progressContainer.classList.add("hidden");
+        progressBar.style.width = "0%";
+      }, 300);
+
+      playBtn.classList.remove("hidden");
+      document.getElementById("stopSong").classList.add("hidden");
+    }
+    function stopPlayingSong() {
+      allTimeouts.forEach((el) => {
+        clearTimeout(el);
+      });
+      allTimeouts = [];
+      Object.keys(state.oscList).forEach((k) => {
+        stopSound(k, state, Tempkeys);
+      });
+    }
 
     const tempBtn = document.getElementById("stopSong");
+
     tempBtn.onclick = () => {
-      hideProgress(state, playBtn, progressContainer, progressBar);
-      stopPlayingSong(state);
+      pauseBtn.classList.add("hidden");
+      hideProgress();
+      stopPlayingSong();
     };
 
     song.notes.forEach((n) => {
@@ -178,5 +200,10 @@ export function setupPlayer(state) {
 
       allTimeouts.push(temp1, temp2);
     });
+  }
+
+  function findKeyByNote(note, keys) {
+    const el = [...keys].find((k) => k.innerText.slice(0, 3).includes(note));
+    return el ? el.dataset.key : null;
   }
 }
