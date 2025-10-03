@@ -11,6 +11,7 @@ export const state = {
   notes: [],
   currentMode: "interactive",
   playInterval: null,
+  soundSpeed: 1,
 };
 
 document.addEventListener("DOMContentLoaded", () => {

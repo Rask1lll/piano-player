@@ -51,6 +51,26 @@ export function buildPiano(state) {
     }
   });
 
+  const speedButtons = document.querySelectorAll("#soundSpeed");
+
+  speedButtons.forEach((e) => {
+    e.onclick = () => {
+      state.soundSpeed = e.innerHTML;
+      speedButtons.forEach((el) => {
+        el.classList.remove("activeSpeed");
+      });
+
+      e.classList.add("activeSpeed");
+    };
+  });
+  const suspendSongBtn = document.getElementById("stopButton");
+  suspendSongBtn.addEventListener("click", function () {
+    setTimeout(() => {
+      suspendSongBtn.innerHTML = `${
+        suspendSongBtn.innerHTML === "⏹" ? "▶" : "⏹"
+      }`;
+    }, 100);
+  });
   document.addEventListener("keydown", (e) => {
     if (state.audioCtx.state === "suspended") state.audioCtx.resume();
     playSound(e.key, state, keys);

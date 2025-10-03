@@ -1,5 +1,5 @@
 export function setupModes(state) {
-  const modeButtons = document.querySelectorAll(".modes button");
+  const modeButtons = document.querySelectorAll(".modes button ");
   const recordBtn = document.getElementById("record");
   const stopBtn = document.getElementById("stop");
   const downloadBtn = document.getElementById("download");
@@ -7,8 +7,12 @@ export function setupModes(state) {
   const playBtn = document.getElementById("play");
   const statusEl = document.getElementById("status");
   const progressContainer = document.getElementById("progressContainer");
+  const speedBtns = document.querySelector(".speed");
+  const stopSongBtn = document.getElementById("stopButton");
 
   function updateOptions() {
+    document.getElementById("stopSong").classList.add("hidden");
+
     if (state.currentMode === "interactive") {
       recordBtn.classList.remove("hidden");
       stopBtn.classList.remove("hidden");
@@ -18,10 +22,16 @@ export function setupModes(state) {
       playBtn.classList.add("hidden");
 
       stopBtn.classList.add("selected");
+
+      speedBtns.classList.add("hidden");
+      stopSongBtn.classList.add("hidden");
     } else {
       recordBtn.classList.add("hidden");
       stopBtn.classList.add("hidden");
       downloadBtn.classList.add("hidden");
+      stopSongBtn.classList.remove("hidden");
+
+      speedBtns.classList.remove("hidden");
 
       fileInput.classList.remove("hidden");
       playBtn.classList.remove("hidden");
